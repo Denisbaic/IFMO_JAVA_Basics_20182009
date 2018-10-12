@@ -36,11 +36,7 @@ public class WarAndPeaceExercise {
                 }
             }
         }
-        int g=4;
         dictionary.entrySet().removeIf(entry -> entry.getValue() < 10);
-       int c= "разговором".compareTo("пусть");
-
-
         //сортировка и отбор в алфавитном порядке
         ArrayList<String> list_result=new ArrayList<String>();
         while (!dictionary.isEmpty()){
