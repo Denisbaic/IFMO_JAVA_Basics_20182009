@@ -1,6 +1,5 @@
 package ru.ifmo.cet.javabasics;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -15,7 +14,7 @@ public class WarAndPeaceExercise {
         final Path tome12Path = Paths.get("src", "main", "resources", "WAP12.txt");
         final Path tome34Path = Paths.get("src", "main", "resources", "WAP34.txt");
 
-        HashMap<String,Integer> dictionary=new HashMap<String,Integer>();
+        HashMap<String,Integer> dictionary= new HashMap<>();
         final Charset charset = Charset.forName("windows-1251");
 
         List<String> strings = Files.readAllLines(tome12Path, charset);
@@ -36,9 +35,14 @@ public class WarAndPeaceExercise {
                 }
             }
         }
-        dictionary.entrySet().removeIf(entry -> entry.getValue() < 10);
+        for(Iterator<HashMap.Entry<String, Integer>> it=dictionary.entrySet().iterator();it.hasNext();) {
+            HashMap.Entry<String, Integer> entry = it.next();
+            if (entry.getValue() < 10) {
+                it.remove();
+            }
+        }
         //сортировка и отбор в алфавитном порядке
-        ArrayList<String> list_result=new ArrayList<String>();
+        ArrayList<String> list_result= new ArrayList<>();
         while (!dictionary.isEmpty()){
             HashMap.Entry<String, Integer> Max_entry=dictionary.entrySet().iterator().next();
             for (Map.Entry<String, Integer> entry : dictionary.entrySet()) {
