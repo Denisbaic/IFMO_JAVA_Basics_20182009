@@ -88,7 +88,7 @@ public class BottleSong {
             case 7: word= "seven";break;
             case 8: word= "eight";break;
             case 9: word= "nine";break;
-            default: word="zero";
+            default: word="";
         }
         return word;
     }
@@ -103,19 +103,20 @@ public class BottleSong {
             case 7: word= "seventy";break;
             case 8: word= "eighty";break;
             case 9: word= "ninety";break;
-            default: word="zero";
+            default: word="";
         }
         return word;
     }
     public String getFullNum(Integer num){
+        Integer temp_num=num;
         String Full_word="";
         int rank=0;
         int temp_first=0;
-        while(num!=0){
+        while(temp_num!=0){
             rank++;
-            int temp=num;
-            num=num/10;
-            int single_num= (int) (temp-num*Math.pow(10,rank));
+            int temp=temp_num;
+            temp_num=temp_num/10;
+            int single_num= (int) (temp-temp_num*Math.pow(10,rank));
 
             if(rank==1){
                 Full_word=(getSingleNum(single_num));
@@ -134,6 +135,7 @@ public class BottleSong {
                         case 7: Full_word=( "seventeen");break;
                         case 8: Full_word=( "eighteen");break;
                         case 9: Full_word=( "nineteen");break;
+                        default: Full_word="";
                     }
                 }else{
                     if(temp_first==0){
