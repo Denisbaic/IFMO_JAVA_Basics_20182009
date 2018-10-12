@@ -30,7 +30,7 @@ package ru.ifmo.cet.javabasics;
  * Значение передается в качестве параметра конструктора
  * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
  */
-public class BottleSong {
+class BottleSong {
     //пожалуйста, не смотрите на этот код, он плохой
     private Integer bottleTakenAtOnce;
     public BottleSong(int _bottleTakenAtOnce) {
@@ -75,7 +75,7 @@ public class BottleSong {
 
     }
 
-    public String getSingleNum(Integer single_num){
+    private String getSingleNum(Integer single_num){
         String word = "";
         switch(single_num){
             case 0: word="zero";break;
@@ -92,7 +92,7 @@ public class BottleSong {
         }
         return word;
     }
-    public String getSecondNum(Integer single_num){
+    private String getSecondNum(Integer single_num){
         String word="";
         switch(single_num){
             case 2: word= "twenty";break;
