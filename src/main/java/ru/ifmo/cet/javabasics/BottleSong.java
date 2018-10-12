@@ -32,7 +32,7 @@ package ru.ifmo.cet.javabasics;
  */
 public class BottleSong {
     //пожалуйста, не смотрите на этот код, он плохой
-    Integer bottleTakenAtOnce;
+    private Integer bottleTakenAtOnce;
     public BottleSong(int _bottleTakenAtOnce) {
         bottleTakenAtOnce=_bottleTakenAtOnce;
     }
@@ -52,7 +52,7 @@ public class BottleSong {
                 Song = Song +"Take "+getFullNum(bottleTakenAtOnce)+ " down and pass around, no more bottles of beer on the wall.\n";
                 break;
             }else{
-                if(bottleCount==bottleTakenAtOnce){
+                if(bottleCount.equals(bottleTakenAtOnce)){
                     Song = Song + bottleCount.toString() + " bottles of beer on the wall, " + bottleCount.toString() + " bottles of beer.\n";
                     Song = Song +"Take "+getFullNum(bottleTakenAtOnce)+ " down and pass around, no more bottles of beer on the wall.\n";
                     break;
@@ -76,8 +76,8 @@ public class BottleSong {
     }
 
     public String getSingleNum(Integer single_num){
-        String word=new String();
-        switch (single_num){
+        String word = "";
+        switch(single_num){
             case 0: word="zero";break;
             case 1: word= "one"; break;
             case 2: word= "two";break;
@@ -88,12 +88,13 @@ public class BottleSong {
             case 7: word= "seven";break;
             case 8: word= "eight";break;
             case 9: word= "nine";break;
+            default: word="zero";
         }
         return word;
     }
     public String getSecondNum(Integer single_num){
-        String word=new String();
-        switch (single_num){
+        String word="";
+        switch(single_num){
             case 2: word= "twenty";break;
             case 3: word= "thirty";break;
             case 4: word= "forty";break;
@@ -102,11 +103,12 @@ public class BottleSong {
             case 7: word= "seventy";break;
             case 8: word= "eighty";break;
             case 9: word= "ninety";break;
+            default: word="zero";
         }
         return word;
     }
     public String getFullNum(Integer num){
-        String Full_word=new String();
+        String Full_word="";
         int rank=0;
         int temp_first=0;
         while(num!=0){
