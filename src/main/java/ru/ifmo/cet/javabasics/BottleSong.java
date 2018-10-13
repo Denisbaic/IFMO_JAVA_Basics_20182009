@@ -1,78 +1,41 @@
 package ru.ifmo.cet.javabasics;
 
-/**
- * Нужно реализовать констурктор и метод, возвращающий слова песни про бутылки на стене.
- * <p>
- * Слова следующие:
- * <p>
- * 99 bottles of beer on the wall, 99 bottles of beer
- * Take one down, pass it around, 98 bottles of beer
- * 98 bottles of beer on the wall, 98 bottles of beer
- * Take one down, pass it around, 97 bottles of beer
- * 97 bottles of beer on the wall, 97 bottles of beer
- * Take one down, pass it around, 96 bottles of beer
- * 96 bottles of beer on the wall, 96 bottles of beer
- * Take one down, pass it around, 95 bottles of beer
- * 95 bottles of beer on the wall, 95 bottles of beer
- * ...
- * <p>
- * 3 bottles of beer on the wall, 3 bottles of beer
- * Take one down, pass it around, 2 bottles of beer
- * 2 bottles of beer on the wall, 2 bottles of beer
- * Take one down, pass it around, 1 bottles of beer
- * 1 bottle of beer on the wall, 1 bottle of beer
- * Take one down, pass it around, no more bottles of beer on the wall
- * No more bottles of beer on the wall, no more bottles of beer
- * Go to the store and buy some more, 99 bottles of beer on the wall
- * <p>
- * Дело усложняется тем, что текст песни переменный:
- * За раз может быть взято несколько бутылок.
- * Значение передается в качестве параметра конструктора
- * Нужно ограничить возможность взятия бутылок натуральным число не более 99 бутылок за раз.
- */
+
 class BottleSong {
-    //пожалуйста, не смотрите на этот код, он плохой
     private Integer bottleTakenAtOnce;
     public BottleSong(int _bottleTakenAtOnce) {
         bottleTakenAtOnce=_bottleTakenAtOnce;
     }
-
-
-
     public String getBottleSongLyrics() {
         if(bottleTakenAtOnce<=0 ||bottleTakenAtOnce>99) throw new IllegalArgumentException();
         String Song="";
         Integer bottleCount=99;
-        while (bottleCount!=0){
+        while (bottleCount>0){
             if(bottleCount<bottleTakenAtOnce){
                 bottleTakenAtOnce=bottleCount;
             }
             if(bottleCount==1){
-                Song = Song + bottleCount.toString() + " bottle of beer on the wall, " + bottleCount.toString() + " bottle of beer.\n";
-                Song = Song +"Take "+getFullNum(bottleTakenAtOnce)+ " down and pass around, no more bottles of beer on the wall.\n";
+                Song += bottleCount.toString() + " bottle of beer on the wall, " + bottleCount.toString() + " bottle of beer.\n";
+                Song += "Take " + getFullNum(bottleTakenAtOnce) + " down and pass around, no more bottles of beer on the wall.\n";
                 break;
             }else{
                 if(bottleCount.equals(bottleTakenAtOnce)){
-                    Song = Song + bottleCount.toString() + " bottles of beer on the wall, " + bottleCount.toString() + " bottles of beer.\n";
-                    Song = Song +"Take "+getFullNum(bottleTakenAtOnce)+ " down and pass around, no more bottles of beer on the wall.\n";
+                    Song += bottleCount.toString() + " bottles of beer on the wall, " + bottleCount.toString() + " bottles of beer.\n"+
+                            "Take " + getFullNum(bottleTakenAtOnce) + " down and pass around, no more bottles of beer on the wall.\n";
                     break;
                 }else {
-                    Song = Song + bottleCount.toString() + " bottles of beer on the wall, " + bottleCount.toString() + " bottles of beer.\n";
+                    Song += bottleCount.toString() + " bottles of beer on the wall, " + bottleCount.toString() + " bottles of beer.\n";
                     bottleCount -= bottleTakenAtOnce;
-                    if(bottleCount==1){
-                        Song = Song + "Take " + getFullNum(bottleTakenAtOnce) + " down and pass around, " + bottleCount.toString() + " bottle of beer on the wall.\n";
-                    }
-                    else{
-                        Song = Song + "Take " + getFullNum(bottleTakenAtOnce) + " down and pass around, " + bottleCount.toString() + " bottles of beer on the wall.\n";
+                    if(bottleCount==1) {
+                        Song += "Take " + getFullNum(bottleTakenAtOnce) + " down and pass around, " + bottleCount.toString() + " bottle of beer on the wall.\n";
+                    } else {
+                        Song += "Take " + getFullNum(bottleTakenAtOnce) + " down and pass around, " + bottleCount.toString() + " bottles of beer on the wall.\n";
                     }
                 }
             }
         }
-        Song=Song+"No more bottles of beer on the wall, no more bottles of beer.\n" +
-                "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+        Song += "No more bottles of beer on the wall, no more bottles of beer.\n" + "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
         return Song;
-
-
     }
 
     private String getSingleNum(Integer single_num){
@@ -88,7 +51,7 @@ class BottleSong {
             case 7: word= "seven";break;
             case 8: word= "eight";break;
             case 9: word= "nine";break;
-            default: word="";
+            default:break;
         }
         return word;
     }
@@ -103,7 +66,7 @@ class BottleSong {
             case 7: word= "seventy";break;
             case 8: word= "eighty";break;
             case 9: word= "ninety";break;
-            default: word="";
+            default: break;
         }
         return word;
     }
@@ -135,7 +98,7 @@ class BottleSong {
                         case 7: Full_word=( "seventeen");break;
                         case 8: Full_word=( "eighteen");break;
                         case 9: Full_word=( "nineteen");break;
-                        default: Full_word="";
+                        default: Full_word="";break;
                     }
                 }else{
                     if(temp_first==0){
