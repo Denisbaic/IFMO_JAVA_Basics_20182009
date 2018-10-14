@@ -27,7 +27,7 @@ public class WarAndPeaceExercise {
 
         Map<String,Integer> dictionary=new LinkedHashMap<>();
         finalWords.forEach(key -> {
-            Integer integer = (dictionary.containsKey(key)) ? (dictionary.put(key, dictionary.get(key) + 1)) : (dictionary.put(key, 1));
+            dictionary.put(key, dictionary.containsKey(key) ? dictionary.get(key) + 1 : 1);
         });
         dictionary.entrySet().removeIf(entires->entires.getValue()<10);
 
